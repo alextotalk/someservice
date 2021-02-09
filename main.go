@@ -1,10 +1,11 @@
 package main
 
 import (
-	"handlers"
 	"log"
 	"net/http"
 	"os"
+
+	"google.golang.org/grpc/someservice/handlers"
 )
 
 func main() {
@@ -13,7 +14,7 @@ func main() {
 	hh := handlers.NewHello
 
 	sm := http.NewServeMux()
-	sm.Handle("/", hh)
+	sm.Handle("/", hh(l))
 
 	/* x := "IT`s working"
 	fmt.Printf("%v \n", x)
